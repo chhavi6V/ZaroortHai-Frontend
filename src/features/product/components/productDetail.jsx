@@ -3,7 +3,6 @@ import { StarIcon } from "@heroicons/react/20/solid";
 import { Radio, RadioGroup } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { selectLoggedInUser } from "../../auth/authSlice";
 import { addToCartAsync, selectItems } from "../../cart/cartSlice";
 import { discountedPrice } from "../../../app/constants";
 import {
@@ -42,7 +41,6 @@ function classNames(...classes) {
 export default function ProductDetail() {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
-  const user = useSelector(selectLoggedInUser);
   const items = useSelector(selectItems);
   const product = useSelector(selectProductById);
   const dispatch = useDispatch();
@@ -53,7 +51,7 @@ export default function ProductDetail() {
     e.preventDefault();
     if (items.findIndex((item) => item.product.id === product.id) < 0) {
       console.log({ items, product });
-      const newItem = { product: product.id, quantity: 1, user: user.id };
+      const newItem = { product: product.id, quantity: 1};
       delete newItem["id"];
       dispatch(addToCartAsync(newItem));
     }
