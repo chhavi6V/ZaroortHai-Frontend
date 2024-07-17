@@ -5,6 +5,7 @@ const initialState = {
   orders: [],
   status: "idle",
   currentOrder: null,
+  totalOrders: 0,
 };
 //we may need more info of current order
 
@@ -16,7 +17,6 @@ export const createOrderAsync = createAsyncThunk(
     return response.data;
   }
 );
-
 export const updateOrderAsync = createAsyncThunk(
   "order/updateOrder",
   async (order) => {

@@ -6,10 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addToCartAsync } from "../../cart/cartSlice";
 import { selectLoggedInUser } from "../../auth/authSlice";
-import {
-  fetchAllProductByIdAsync,
-  selectProductById,
-} from "../../product/productSlice";
+import { fetchProductByIdAsync, selectProductById } from "../../product/productSlice";
 import { discountedPrice } from "../../../app/constants";
 
 // TODO: In server data we will add colors, sizes , highlights. to each product
@@ -59,7 +56,7 @@ export default function AdminProductDetail() {
   };
 
   useEffect(() => {
-    dispatch(fetchAllProductByIdAsync(params.id));
+    dispatch(fetchProductByIdAsync(params.id));
   }, [dispatch, params.id]);
 
   return (

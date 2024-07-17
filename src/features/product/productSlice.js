@@ -1,35 +1,23 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
-  createProduct,
-  fetchAllProducts,
-  fetchAvailability,
+  fetchProductsByFilters,
+  fetchBrands,
   fetchCategories,
   fetchProductById,
-  fetchProductsByFilters,
-  fetchWarranty,
+  createProduct,
   updateProduct,
 } from "./productAPI";
 
 const initialState = {
   products: [],
-  availabilityStatus: [],
-  category: [],
-  warrantyInformation: [],
+  brands: [],
+  categories: [],
   status: "idle",
-  selectedProduct: null,
   totalItems: 0,
+  selectedProduct: null,
 };
 
-export const fetchAllProductsAsync = createAsyncThunk(
-  "product/fetchAllProducts",
-  async () => {
-    const response = await fetchAllProducts();
-    // The value we return becomes the `fulfilled` action payload
-    return response.data;
-  }
-);
-
-export const fetchAllProductByIdAsync = createAsyncThunk(
+export const fetchProductByIdAsync = createAsyncThunk(
   "product/fetchProductById",
   async (id) => {
     const response = await fetchProductById(id);
@@ -40,34 +28,30 @@ export const fetchAllProductByIdAsync = createAsyncThunk(
 
 export const fetchProductsByFiltersAsync = createAsyncThunk(
   "product/fetchProductsByFilters",
-  async ({ filter, sort, pagination }) => {
-    const response = await fetchProductsByFilters(filter, sort, pagination);
-    // The value we return becomes the `fulfilled` action payload
-    return response.data;
-  }
-);
-export const fetchProductsByAvailabilityAsync = createAsyncThunk(
-  "product/availabilityStatus",
-  async () => {
-    const response = await fetchAvailability();
+  async ({ filter, sort, pagination, admin }) => {
+    const response = await fetchProductsByFilters(
+      filter,
+      sort,
+      pagination,
+      admin
+    );
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
 );
 
-export const fetchProductsByCategoryAsync = createAsyncThunk(
-  "product/category",
+export const fetchBrandsAsync = createAsyncThunk(
+  "product/fetchBrands",
+  async () => {
+    const response = await fetchBrands();
+    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
+export const fetchCategoriesAsync = createAsyncThunk(
+  "product/fetchCategories",
   async () => {
     const response = await fetchCategories();
-    // The value we return becomes the `fulfilled` action payload
-    return response.data;
-  }
-);
-
-export const fetchProductsByWarrantyAsync = createAsyncThunk(
-  "product/warrantyInformation",
-  async () => {
-    const response = await fetchWarranty();
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
@@ -99,46 +83,32 @@ export const productSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchAllProductsAsync.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(fetchAllProductsAsync.fulfilled, (state, action) => {
-        state.status = "idle";
-        state.products = action.payload;
-      })
       .addCase(fetchProductsByFiltersAsync.pending, (state) => {
         state.status = "loading";
       })
       .addCase(fetchProductsByFiltersAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.products = action.payload.data;
+        state.products = action.payload.products;
         state.totalItems = action.payload.totalItems;
       })
-      .addCase(fetchProductsByAvailabilityAsync.pending, (state) => {
+      .addCase(fetchBrandsAsync.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchProductsByAvailabilityAsync.fulfilled, (state, action) => {
+      .addCase(fetchBrandsAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.availabilityStatus = action.payload;
+        state.brands = action.payload;
       })
-      .addCase(fetchProductsByCategoryAsync.pending, (state) => {
+      .addCase(fetchCategoriesAsync.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchProductsByCategoryAsync.fulfilled, (state, action) => {
+      .addCase(fetchCategoriesAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.category = action.payload;
+        state.categories = action.payload;
       })
-      .addCase(fetchProductsByWarrantyAsync.pending, (state) => {
+      .addCase(fetchProductByIdAsync.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchProductsByWarrantyAsync.fulfilled, (state, action) => {
-        state.status = "idle";
-        state.warrantyInformation = action.payload;
-      })
-      .addCase(fetchAllProductByIdAsync.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(fetchAllProductByIdAsync.fulfilled, (state, action) => {
+      .addCase(fetchProductByIdAsync.fulfilled, (state, action) => {
         state.status = "idle";
         state.selectedProduct = action.payload;
       })
@@ -158,6 +128,7 @@ export const productSlice = createSlice({
           (product) => product.id === action.payload.id
         );
         state.products[index] = action.payload;
+        state.selectedProduct = action.payload;
       });
   },
 });
@@ -165,9 +136,11 @@ export const productSlice = createSlice({
 export const { clearSelectedProduct } = productSlice.actions;
 
 export const selectAllProducts = (state) => state.product.products;
-export const selectAvailability = (state) => state.product.availabilityStatus;
-export const selectCategory = (state) => state.product.category;
-export const selectWarranty = (state) => state.product.warrantyInformation;
+export const selectBrands = (state) => state.product.brands;
+export const selectCategories = (state) => state.product.categories;
 export const selectProductById = (state) => state.product.selectedProduct;
+export const selectProductListStatus = (state) => state.product.status;
+
+export const selectTotalItems = (state) => state.product.totalItems;
 
 export default productSlice.reducer;

@@ -27,15 +27,14 @@ import {
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  fetchAllProductsAsync,
-  fetchProductsByAvailabilityAsync,
-  fetchProductsByCategoryAsync,
+  fetchBrandsAsync,
+  fetchCategoriesAsync,
   fetchProductsByFiltersAsync,
-  fetchProductsByWarrantyAsync,
   selectAllProducts,
-  selectAvailability,
-  selectCategory,
-  selectWarranty,
+  selectBrands,
+  selectCategories,
+  selectProductListStatus,
+  selectTotalItems,
 } from "../productSlice";
 import { ITEMS_PER_PAGE, discountedPrice } from "../../../app/constants";
 import Pagination from "../../common/Pagination";
@@ -52,37 +51,33 @@ function classNames(...classes) {
 
 export default function ProductList() {
   const dispatch = useDispatch();
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const products = useSelector(selectAllProducts);
-  const availabilty = useSelector(selectAvailability);
-  const category = useSelector(selectCategory);
-  const warranty = useSelector(selectWarranty);
-  const [filter, setFilter] = useState({});
-  const [sort, setSort] = useState({});
-  const [page, setPage] = useState(1);
-  const _per_page = ITEMS_PER_PAGE;
-
+  const brands = useSelector(selectBrands);
+  const categories = useSelector(selectCategories);
+  const totalItems = useSelector(selectTotalItems);
+  const status = useSelector(selectProductListStatus);
   const filters = [
     {
-      id: "availabilityStatus",
-      name: "Availability",
-      options: availabilty,
-    },
-    {
-      id: "tags",
+      id: "category",
       name: "Category",
-      options: category,
+      options: categories,
     },
     {
-      id: "warrantyInformation",
-      name: "Warranty Information",
-      options: warranty,
+      id: "brand",
+      name: "Brands",
+      options: brands,
     },
   ];
+
+  const [filter, setFilter] = useState({});
+  const [sort, setSort] = useState({});
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [page, setPage] = useState(1);
 
   const handleFilter = (e, section, option) => {
     console.log(e.target.checked);
     const newFilter = { ...filter };
+    // TODO : on server it will support multiple categories
     if (e.target.checked) {
       if (newFilter[section.id]) {
         newFilter[section.id].push(option.value);
@@ -98,32 +93,32 @@ export default function ProductList() {
     console.log({ newFilter });
 
     setFilter(newFilter);
-    //console.log(section.id, option.label);
   };
 
   const handleSort = (e, option) => {
     const sort = { _sort: option.sort, _order: option.order };
+    console.log({ sort });
     setSort(sort);
   };
 
   const handlePage = (page) => {
+    console.log({ page });
     setPage(page);
   };
 
   useEffect(() => {
-    const pagination = { _page: page, _per_page: _per_page };
-    // console.log(pagination)
+    const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
     dispatch(fetchProductsByFiltersAsync({ filter, sort, pagination }));
+    // TODO : Server will filter deleted products
   }, [dispatch, filter, sort, page]);
 
   useEffect(() => {
     setPage(1);
-  }, [sort]);
+  }, [totalItems, sort]);
 
   useEffect(() => {
-    dispatch(fetchProductsByAvailabilityAsync());
-    dispatch(fetchProductsByCategoryAsync());
-    dispatch(fetchProductsByWarrantyAsync());
+    dispatch(fetchBrandsAsync());
+    dispatch(fetchCategoriesAsync());
   }, []);
 
   return (
@@ -222,7 +217,7 @@ export default function ProductList() {
               page={page}
               setPage={setPage}
               handlePage={handlePage}
-              totalItems={27}
+              totalItems={totalItems}
             ></Pagination>
           </div>
         </main>
@@ -424,6 +419,16 @@ function ProductGrid({ products }) {
                       </p>
                     </div>
                   </div>
+                  {product.deleted && (
+                    <div>
+                      <p className="text-sm text-red-400">product deleted</p>
+                    </div>
+                  )}
+                  {product.stock <= 0 && (
+                    <div>
+                      <p className="text-sm text-red-400">out of stock</p>
+                    </div>
+                  )}
                 </div>
               </Link>
             ))}

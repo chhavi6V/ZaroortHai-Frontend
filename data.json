@@ -1789,6 +1789,15 @@
           "pinCode": "201013",
           "phone": "9079262495",
           "street": "scheme 3"
+        },
+        {
+          "name": "rdetfyguhij",
+          "email": "sewrdtyguhj@gmail.vokm",
+          "phone": "23456789",
+          "street": "sexdrcfvgybhjnk",
+          "city": "xdcfvghbj",
+          "state": "sewrdtfgyvbhj",
+          "pinCode": "2345678"
         }
       ],
       "password": "Vedant@123"
@@ -1802,187 +1811,6 @@
     }
   ],
   "cart": [
-    {
-      "id": "7b47",
-      "title": "Cooking Oil",
-      "description": "Versatile cooking oil suitable for frying, sautéing, and various culinary applications.",
-      "category": "groceries",
-      "price": 4.99,
-      "discountPercentage": 18.89,
-      "rating": 4.01,
-      "stock": 22,
-      "tags": [
-        "cooking essentials"
-      ],
-      "sku": "Q6ZP1UY8",
-      "weight": 8,
-      "dimensions": {
-        "width": 8.18,
-        "height": 27.45,
-        "depth": 27.88
-      },
-      "warrantyInformation": "Lifetime warranty",
-      "shippingInformation": "Ships in 1 month",
-      "availabilityStatus": "In Stock",
-      "reviews": [
-        {
-          "rating": 5,
-          "comment": "Would buy again!",
-          "date": "2024-05-23T08:56:21.620Z",
-          "reviewerName": "Mason Parker",
-          "reviewerEmail": "mason.parker@x.dummyjson.com"
-        },
-        {
-          "rating": 3,
-          "comment": "Poor quality!",
-          "date": "2024-05-23T08:56:21.620Z",
-          "reviewerName": "Jonathan Pierce",
-          "reviewerEmail": "jonathan.pierce@x.dummyjson.com"
-        },
-        {
-          "rating": 5,
-          "comment": "Would buy again!",
-          "date": "2024-05-23T08:56:21.620Z",
-          "reviewerName": "Alexander Hernandez",
-          "reviewerEmail": "alexander.hernandez@x.dummyjson.com"
-        }
-      ],
-      "returnPolicy": "60 days return policy",
-      "minimumOrderQuantity": 2,
-      "meta": {
-        "createdAt": "2024-05-23T08:56:21.620Z",
-        "updatedAt": "2024-05-23T08:56:21.620Z",
-        "barcode": "6707669443381",
-        "qrCode": "https://assets.dummyjson.com/public/qr-code.png"
-      },
-      "images": [
-        "https://cdn.dummyjson.com/products/images/groceries/Cooking%20Oil/1.png"
-      ],
-      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Cooking%20Oil/thumbnail.png",
-      "quantity": 1,
-      "user": "9175"
-    },
-    {
-      "id": "b736",
-      "title": "Apple",
-      "description": "Fresh and crisp apples, perfect for snacking or incorporating into various recipes.",
-      "category": "groceries",
-      "price": 1.99,
-      "discountPercentage": 1.97,
-      "rating": 2.96,
-      "stock": 9,
-      "tags": [
-        "fruits"
-      ],
-      "sku": "QTROUV79",
-      "weight": 8,
-      "dimensions": {
-        "width": 8.29,
-        "height": 5.58,
-        "depth": 12.41
-      },
-      "warrantyInformation": "2 year warranty",
-      "shippingInformation": "Ships in 2 weeks",
-      "availabilityStatus": "In Stock",
-      "reviews": [
-        {
-          "rating": 4,
-          "comment": "Great product!",
-          "date": "2024-05-23T08:56:21.620Z",
-          "reviewerName": "Logan Lee",
-          "reviewerEmail": "logan.lee@x.dummyjson.com"
-        },
-        {
-          "rating": 4,
-          "comment": "Great product!",
-          "date": "2024-05-23T08:56:21.620Z",
-          "reviewerName": "Elena Long",
-          "reviewerEmail": "elena.long@x.dummyjson.com"
-        },
-        {
-          "rating": 1,
-          "comment": "Not as described!",
-          "date": "2024-05-23T08:56:21.620Z",
-          "reviewerName": "Grayson Coleman",
-          "reviewerEmail": "grayson.coleman@x.dummyjson.com"
-        }
-      ],
-      "returnPolicy": "60 days return policy",
-      "minimumOrderQuantity": 44,
-      "meta": {
-        "createdAt": "2024-05-23T08:56:21.620Z",
-        "updatedAt": "2024-05-23T08:56:21.620Z",
-        "barcode": "2517819903837",
-        "qrCode": "https://assets.dummyjson.com/public/qr-code.png"
-      },
-      "images": [
-        "https://cdn.dummyjson.com/products/images/groceries/Apple/1.png"
-      ],
-      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Apple/thumbnail.png",
-      "quantity": 1,
-      "user": "9175"
-    },
-    {
-      "id": "ef8c",
-      "title": "Cooking Oil",
-      "description": "Versatile cooking oil suitable for frying, sautéing, and various culinary applications.",
-      "category": "groceries",
-      "price": 4.99,
-      "discountPercentage": 18.89,
-      "rating": 4.01,
-      "stock": 22,
-      "tags": [
-        "cooking essentials"
-      ],
-      "sku": "Q6ZP1UY8",
-      "weight": 8,
-      "dimensions": {
-        "width": 8.18,
-        "height": 27.45,
-        "depth": 27.88
-      },
-      "warrantyInformation": "Lifetime warranty",
-      "shippingInformation": "Ships in 1 month",
-      "availabilityStatus": "In Stock",
-      "reviews": [
-        {
-          "rating": 5,
-          "comment": "Would buy again!",
-          "date": "2024-05-23T08:56:21.620Z",
-          "reviewerName": "Mason Parker",
-          "reviewerEmail": "mason.parker@x.dummyjson.com"
-        },
-        {
-          "rating": 3,
-          "comment": "Poor quality!",
-          "date": "2024-05-23T08:56:21.620Z",
-          "reviewerName": "Jonathan Pierce",
-          "reviewerEmail": "jonathan.pierce@x.dummyjson.com"
-        },
-        {
-          "rating": 5,
-          "comment": "Would buy again!",
-          "date": "2024-05-23T08:56:21.620Z",
-          "reviewerName": "Alexander Hernandez",
-          "reviewerEmail": "alexander.hernandez@x.dummyjson.com"
-        }
-      ],
-      "returnPolicy": "60 days return policy",
-      "minimumOrderQuantity": 2,
-      "meta": {
-        "createdAt": "2024-05-23T08:56:21.620Z",
-        "updatedAt": "2024-05-23T08:56:21.620Z",
-        "barcode": "6707669443381",
-        "qrCode": "https://assets.dummyjson.com/public/qr-code.png"
-      },
-      "images": [
-        "https://cdn.dummyjson.com/products/images/groceries/Cooking%20Oil/1.png"
-      ],
-      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Cooking%20Oil/thumbnail.png",
-      "productId": "20",
-      "quantity": 1,
-      "user": "9175"
-    },
     {
       "id": "3933",
       "title": "Apple",
@@ -2043,6 +1871,68 @@
       "productId": "16",
       "quantity": 1,
       "user": "f153"
+    },
+    {
+      "id": "26be",
+      "title": "Cat Food",
+      "description": "Nutritious cat food formulated to meet the dietary needs of your feline friend.",
+      "category": "groceries",
+      "price": 8.99,
+      "discountPercentage": 9.57,
+      "rating": 2.88,
+      "stock": 13,
+      "tags": [
+        "pet supplies",
+        "cat food"
+      ],
+      "sku": "C3F8QN6O",
+      "weight": 9,
+      "dimensions": {
+        "width": 15.4,
+        "height": 13.97,
+        "depth": 25.13
+      },
+      "warrantyInformation": "3 months warranty",
+      "shippingInformation": "Ships in 1-2 business days",
+      "availabilityStatus": "In Stock",
+      "reviews": [
+        {
+          "rating": 5,
+          "comment": "Very pleased!",
+          "date": "2024-05-23T08:56:21.620Z",
+          "reviewerName": "Mateo Bennett",
+          "reviewerEmail": "mateo.bennett@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Very pleased!",
+          "date": "2024-05-23T08:56:21.620Z",
+          "reviewerName": "Aurora Barnes",
+          "reviewerEmail": "aurora.barnes@x.dummyjson.com"
+        },
+        {
+          "rating": 5,
+          "comment": "Great value for money!",
+          "date": "2024-05-23T08:56:21.620Z",
+          "reviewerName": "Ellie Stewart",
+          "reviewerEmail": "ellie.stewart@x.dummyjson.com"
+        }
+      ],
+      "returnPolicy": "7 days return policy",
+      "minimumOrderQuantity": 48,
+      "meta": {
+        "createdAt": "2024-05-23T08:56:21.620Z",
+        "updatedAt": "2024-05-23T08:56:21.620Z",
+        "barcode": "5503491330693",
+        "qrCode": "https://assets.dummyjson.com/public/qr-code.png"
+      },
+      "images": [
+        "https://cdn.dummyjson.com/products/images/groceries/Cat%20Food/1.png"
+      ],
+      "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Cat%20Food/thumbnail.png",
+      "productId": "18",
+      "quantity": 1,
+      "user": "9175"
     }
   ],
   "orders": [
@@ -2241,6 +2131,111 @@
         "pinCode": "201013",
         "phone": "9079262495",
         "street": "scheme 3"
+      },
+      "status": "delivered"
+    },
+    {
+      "id": "c095",
+      "items": [
+        {
+          "id": "f25b",
+          "title": "Apple",
+          "description": "Fresh and crisp apples, perfect for snacking or incorporating into various recipes.",
+          "category": "groceries",
+          "price": 1.99,
+          "discountPercentage": 1.97,
+          "rating": 2.96,
+          "stock": 9,
+          "tags": [
+            "fruits"
+          ],
+          "sku": "QTROUV79",
+          "weight": 8,
+          "dimensions": {
+            "width": 8.29,
+            "height": 5.58,
+            "depth": 12.41
+          },
+          "warrantyInformation": "2 year warranty",
+          "shippingInformation": "Ships in 2 weeks",
+          "availabilityStatus": "In Stock",
+          "reviews": [
+            {
+              "rating": 4,
+              "comment": "Great product!",
+              "date": "2024-05-23T08:56:21.620Z",
+              "reviewerName": "Logan Lee",
+              "reviewerEmail": "logan.lee@x.dummyjson.com"
+            },
+            {
+              "rating": 4,
+              "comment": "Great product!",
+              "date": "2024-05-23T08:56:21.620Z",
+              "reviewerName": "Elena Long",
+              "reviewerEmail": "elena.long@x.dummyjson.com"
+            },
+            {
+              "rating": 1,
+              "comment": "Not as described!",
+              "date": "2024-05-23T08:56:21.620Z",
+              "reviewerName": "Grayson Coleman",
+              "reviewerEmail": "grayson.coleman@x.dummyjson.com"
+            }
+          ],
+          "returnPolicy": "60 days return policy",
+          "minimumOrderQuantity": 44,
+          "meta": {
+            "createdAt": "2024-05-23T08:56:21.620Z",
+            "updatedAt": "2024-05-23T08:56:21.620Z",
+            "barcode": "2517819903837",
+            "qrCode": "https://assets.dummyjson.com/public/qr-code.png"
+          },
+          "images": [
+            "https://cdn.dummyjson.com/products/images/groceries/Apple/1.png"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Apple/thumbnail.png",
+          "productId": "16",
+          "quantity": 1,
+          "user": "9175"
+        }
+      ],
+      "totalAmount": 2,
+      "totalItems": 1,
+      "user": {
+        "id": "9175",
+        "email": "testsvedant@gmail.com",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "VEDANT",
+            "email": "testsvedant@gmail.com",
+            "city": "ALwar",
+            "state": "Rahastan",
+            "pinCode": "201013",
+            "phone": "9079262495",
+            "street": "scheme 3"
+          },
+          {
+            "name": "rdetfyguhij",
+            "email": "sewrdtyguhj@gmail.vokm",
+            "phone": "23456789",
+            "street": "sexdrcfvgybhjnk",
+            "city": "xdcfvghbj",
+            "state": "sewrdtfgyvbhj",
+            "pinCode": "2345678"
+          }
+        ],
+        "password": "Vedant@123"
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "rdetfyguhij",
+        "email": "sewrdtyguhj@gmail.vokm",
+        "phone": "23456789",
+        "street": "sexdrcfvgybhjnk",
+        "city": "xdcfvghbj",
+        "state": "sewrdtfgyvbhj",
+        "pinCode": "2345678"
       },
       "status": "pending"
     }

@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { Radio, RadioGroup } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllProductByIdAsync, selectProductById } from "../productSlice";
 import { useParams } from "react-router-dom";
 import { selectLoggedInUser } from "../../auth/authSlice";
 import { addToCartAsync, selectItems } from "../../cart/cartSlice";
 import { discountedPrice } from "../../../app/constants";
+import {
+  fetchProductByIdAsync,
+  selectProductById,
+  selectProductListStatus,
+} from "../productSlice";
 
 const colors = [
   { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
@@ -38,45 +42,26 @@ function classNames(...classes) {
 export default function ProductDetail() {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
-
   const user = useSelector(selectLoggedInUser);
-  const product = useSelector(selectProductById);
   const items = useSelector(selectItems);
+  const product = useSelector(selectProductById);
   const dispatch = useDispatch();
   const params = useParams();
-
-  useEffect(() => {
-    dispatch(fetchAllProductByIdAsync(params.id));
-  }, [dispatch, params.id]);
-
-  // const handleCart = (e) => {
-  //   e.preventDefault();
-  //   if (items.findIndex((item) => item.id === product.id) < 0) {
-  //     console.log({ items, product });
-  //     const newItem = {
-  //       ...product,
-  //       productId: product.id,
-  //       quantity: 1,
-  //       user: user.id,
-  //     };
-  //     delete newItem["id"];
-  //     dispatch(addToCartAsync(newItem));
-  //     // TODO: it will be based on server response of backend
-  //     alert.error("Item added to Cart");
-  //   } else {
-  //     alert.error("Item Already added");
-  //   }
-  // };
+  const status = useSelector(selectProductListStatus);
 
   const handleCart = (e) => {
     e.preventDefault();
-    if (items.findIndex((item) => item.productId === product.id) < 0) {
+    if (items.findIndex((item) => item.product.id === product.id) < 0) {
       console.log({ items, product });
-      const newItem = { ...product, productId: product.id, quantity: 1, user: user.id };
+      const newItem = { product: product.id, quantity: 1, user: user.id };
       delete newItem["id"];
       dispatch(addToCartAsync(newItem));
     }
   };
+
+  useEffect(() => {
+    dispatch(fetchProductByIdAsync(params.id));
+  }, [dispatch, params.id]);
 
   return (
     <div className="bg-white">
@@ -134,14 +119,14 @@ export default function ProductDetail() {
             <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
               <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
                 <img
-                  src={product.images[0]}
+                  src={product.images[1]}
                   alt={product.title}
                   className="h-full w-full object-cover object-center"
                 />
               </div>
               <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
                 <img
-                  src={product.images[0]}
+                  src={product.images[1]}
                   alt={product.title}
                   className="h-full w-full object-cover object-center"
                 />

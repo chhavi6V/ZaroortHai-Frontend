@@ -27,17 +27,16 @@ import {
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  fetchAllProductsAsync,
-  fetchProductsByAvailabilityAsync,
-  fetchProductsByCategoryAsync,
+  fetchBrandsAsync,
+  fetchCategoriesAsync,
   fetchProductsByFiltersAsync,
-  fetchProductsByWarrantyAsync,
   selectAllProducts,
-  selectAvailability,
-  selectCategory,
-  selectWarranty,
+  selectBrands,
+  selectCategories,
+  selectTotalItems,
 } from "../../product/productSlice";
 import { ITEMS_PER_PAGE } from "../../../app/constants";
+import Pagination from "../../common/Pagination";
 
 const sortOptions = [
   { name: "Best Rating", sort: "rating", order: "desc", current: false },
@@ -51,33 +50,27 @@ function classNames(...classes) {
 
 export default function ProductList() {
   const dispatch = useDispatch();
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const products = useSelector(selectAllProducts);
-  const availabilty = useSelector(selectAvailability);
-  const category = useSelector(selectCategory);
-  const warranty = useSelector(selectWarranty);
-  const [filter, setFilter] = useState({});
-  const [sort, setSort] = useState({});
-  const [page, setPage] = useState(1);
-  const _per_page = ITEMS_PER_PAGE;
-
+  const brands = useSelector(selectBrands);
+  const categories = useSelector(selectCategories);
+  const totalItems = useSelector(selectTotalItems);
   const filters = [
     {
-      id: "availabilityStatus",
-      name: "Availability",
-      options: availabilty,
-    },
-    {
-      id: "tags",
+      id: "category",
       name: "Category",
-      options: category,
+      options: categories,
     },
     {
-      id: "warrantyInformation",
-      name: "Warranty Information",
-      options: warranty,
+      id: "brand",
+      name: "Brands",
+      options: brands,
     },
   ];
+
+  const [filter, setFilter] = useState({});
+  const [sort, setSort] = useState({});
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [page, setPage] = useState(1);
 
   const handleFilter = (e, section, option) => {
     console.log(e.target.checked);
@@ -102,27 +95,29 @@ export default function ProductList() {
 
   const handleSort = (e, option) => {
     const sort = { _sort: option.sort, _order: option.order };
+    console.log({ sort });
     setSort(sort);
   };
 
   const handlePage = (page) => {
+    console.log({ page });
     setPage(page);
   };
 
   useEffect(() => {
-    const pagination = { _page: page, _per_page: _per_page };
-    // console.log(pagination)
-    dispatch(fetchProductsByFiltersAsync({ filter, sort, pagination }));
+    const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
+    dispatch(
+      fetchProductsByFiltersAsync({ filter, sort, pagination, admin: true })
+    );
   }, [dispatch, filter, sort, page]);
 
   useEffect(() => {
     setPage(1);
-  }, [sort]);
+  }, [totalItems, sort]);
 
   useEffect(() => {
-    dispatch(fetchProductsByAvailabilityAsync());
-    dispatch(fetchProductsByCategoryAsync());
-    dispatch(fetchProductsByWarrantyAsync());
+    dispatch(fetchBrandsAsync());
+    dispatch(fetchCategoriesAsync());
   }, []);
 
   return (
@@ -230,6 +225,7 @@ export default function ProductList() {
               page={page}
               setPage={setPage}
               handlePage={handlePage}
+              totalItems={totalItems}
             ></Pagination>
           </div>
         </main>
@@ -441,6 +437,11 @@ function ProductGrid({ products }) {
                         <p className="text-sm text-red-400">product deleted</p>
                       </div>
                     )}
+                    {product.stock <= 0 && (
+                      <div>
+                        <p className="text-sm text-red-400">out of stock</p>
+                      </div>
+                    )}
                   </div>
                 </Link>
                 <div className="mt-5">
@@ -457,80 +458,5 @@ function ProductGrid({ products }) {
         </div>
       </div>
     </div>
-  );
-}
-
-function Pagination({ page, setPage, handlePage, totalItems = 27 }) {
-  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
-  return (
-    <>
-      <div className="flex flex-1 justify-between sm:hidden">
-        <div
-          onClick={(e) => handlePage(page > 1 ? page - 1 : page)}
-          className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-        >
-          Previous
-        </div>
-        <div
-          onClick={(e) => handlePage(page < totalPages ? page + 1 : page)}
-          className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-        >
-          Next
-        </div>
-      </div>
-      <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-        <div>
-          <p className="text-sm text-gray-700">
-            Showing{" "}
-            <span className="font-medium">
-              {(page - 1) * ITEMS_PER_PAGE + 1}
-            </span>{" "}
-            to{" "}
-            <span className="font-medium">
-              {page * ITEMS_PER_PAGE > totalItems
-                ? totalItems
-                : page * ITEMS_PER_PAGE}
-            </span>{" "}
-            of <span className="font-medium">{totalItems}</span> results
-          </p>
-        </div>
-        <div>
-          <nav
-            className="isolate inline-flex -space-x-px rounded-md shadow-sm"
-            aria-label="Pagination"
-          >
-            <div
-              onClick={(e) => handlePage(page > 1 ? page - 1 : page)}
-              className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
-              <span className="sr-only">Previous</span>
-              <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
-            </div>
-            {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
-            {Array.from({ length: totalPages }).map((el, index) => (
-              <div
-                onClick={(e) => handlePage(index + 1)}
-                aria-current="page"
-                className={`relative cursor-pointer z-10 inline-flex items-center ${
-                  index + 1 === page
-                    ? "bg-indigo-600 text-white"
-                    : "text-gray-400"
-                } px-4 py-2 text-sm font-semibold  focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
-              >
-                {index + 1}
-              </div>
-            ))}
-
-            <div
-              onClick={(e) => handlePage(page < totalPages ? page + 1 : page)}
-              className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
-              <span className="sr-only">Next</span>
-              <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-            </div>
-          </nav>
-        </div>
-      </div>
-    </>
   );
 }
