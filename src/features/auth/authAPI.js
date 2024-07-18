@@ -4,6 +4,7 @@ export function createUser(userData) {
       method: "POST",
       body: JSON.stringify(userData),
       headers: { "content-type": "application/json" },
+      credentials: "include",
     });
     const data = await response.json();
     // TODO: on server it will only return some info of user (not password)
@@ -18,6 +19,7 @@ export function loginUser(loginInfo) {
         method: "POST",
         body: JSON.stringify(loginInfo),
         headers: { "content-type": "application/json" },
+        credentials: "include",
       });
       if (response.ok) {
         const data = await response.json();
@@ -37,7 +39,9 @@ export function loginUser(loginInfo) {
 export function checkAuth() {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch("http://localhost:8080/auth/check");
+      const response = await fetch("http://localhost:8080/auth/check", {
+        credentials: "include",
+      });
       if (response.ok) {
         const data = await response.json();
         resolve({ data });
