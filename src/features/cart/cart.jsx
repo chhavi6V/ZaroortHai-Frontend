@@ -89,7 +89,7 @@ export default function Cart() {
                           <button
                             onClick={(e) => handleRemove(e, item.id)}
                             type="button"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                            className="font-medium text-orange-600 hover:text-orange-500"
                           >
                             Remove
                           </button>
@@ -117,18 +117,18 @@ export default function Cart() {
             <div className="mt-6">
               <Link
                 to="/checkout"
-                className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                className="flex items-center justify-center rounded-md border border-transparent bg-orange-500 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-600"
               >
                 Checkout
               </Link>
             </div>
             <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
               <p>
-                or
+                or{' '}
                 <Link to="/">
                   <button
                     type="button"
-                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                    className="font-medium text-orange-600 hover:text-orange-500"
                     onClick={() => setOpen(false)}
                   >
                     Continue Shopping

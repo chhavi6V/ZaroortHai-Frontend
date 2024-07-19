@@ -9,7 +9,11 @@ import Protected from "./features/auth/components/protected";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchItemsByUserIdAsync } from "./features/cart/cartSlice";
-import { checkAuthAsync, selectLoggedInUser, selectUserChecked } from "./features/auth/authSlice";
+import {
+  checkAuthAsync,
+  selectLoggedInUser,
+  selectUserChecked,
+} from "./features/auth/authSlice";
 import PageNotFound from "./pages/404";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
 import UserOrdersPage from "./pages/UserOrdersPage";
@@ -23,6 +27,8 @@ import AdminProductDetailPage from "./pages/AdminProductDetailPage";
 import AdminProductFormPage from "./pages/AdminProductForm";
 import AdminOrdersPage from "./pages/AdminOrdersPage";
 import StripeCheckout from "./pages/StripeCheckout";
+import ProductListPage from "./pages/ProductList";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +36,14 @@ const router = createBrowserRouter([
     element: (
       <Protected>
         <Home />
+      </Protected>
+    ),
+  },
+  {
+    path: "/product-list",
+    element: (
+      <Protected>
+        <ProductListPage />
       </Protected>
     ),
   },
@@ -144,10 +158,9 @@ function App() {
   const user = useSelector(selectLoggedInUser);
   const userChecked = useSelector(selectUserChecked);
 
-
-  useEffect(()=>{
-    dispatch(checkAuthAsync())
-  },[dispatch])
+  useEffect(() => {
+    dispatch(checkAuthAsync());
+  }, [dispatch]);
 
   useEffect(() => {
     if (user) {
@@ -158,7 +171,9 @@ function App() {
 
   return (
     <div className="App">
-      {userChecked && <RouterProvider router={router} />}
+      <ChakraProvider>
+        {userChecked && <RouterProvider router={router} />}
+      </ChakraProvider>
     </div>
   );
 }

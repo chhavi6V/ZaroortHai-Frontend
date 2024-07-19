@@ -291,7 +291,7 @@ function Checkout() {
                   </button>
                   <button
                     type="submit"
-                    className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="rounded-md bg-orange-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     Add Address
                   </button>
@@ -449,7 +449,7 @@ function Checkout() {
                               <button
                                 onClick={(e) => handleRemove(e, item.id)}
                                 type="button"
-                                className="font-medium text-indigo-600 hover:text-indigo-500"
+                                className="font-medium text-orange-600 hover:text-orange-500"
                               >
                                 Remove
                               </button>
@@ -477,18 +477,18 @@ function Checkout() {
                 <div className="mt-6">
                   <div
                     onClick={handleOrder}
-                    className="flex cursor-pointer items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                    className="flex cursor-pointer items-center justify-center rounded-md border border-transparent bg-orange-500 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-orange-600"
                   >
                     Order Now
                   </div>
                 </div>
                 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                   <p>
-                    or
+                    or{' '}
                     <Link to="/">
                       <button
                         type="button"
-                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                        className="font-medium text-orange-600 hover:text-orange-500"
                       >
                         Continue Shopping
                         <span aria-hidden="true"> &rarr;</span>

@@ -11,7 +11,7 @@ import { selectItems } from "../cart/cartSlice";
 import { selectUserInfo } from "../user/userSlice";
 
 const navigation = [
-  { name: "Products", link: "/", user: true },
+  { name: "Products", link: "/product-list", user: true },
   { name: "Products", link: "/admin", admin: true },
   { name: "Orders", link: "/admin/orders", admin: true },
 ];
@@ -33,7 +33,7 @@ function NavBar({ children }) {
     <>
       {userInfo && (
         <div className="min-h-full">
-          <Disclosure as="nav" className="bg-gray-800">
+          <Disclosure as="nav" className="bg-orange-500">
             {({ open }) => (
               <>
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -57,9 +57,9 @@ function NavBar({ children }) {
                                 to={item.link}
                                 className={classNames(
                                   item.current
-                                    ? "bg-gray-900 text-white"
-                                    : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                                  "rounded-md px-3 py-2 text-sm font-medium"
+                                    ? "bg-orange-500 text-white"
+                                    : "text-gray-200 hover:bg-orange-500 hover:text-white",
+                                  "rounded-md px-3 py-2 text-md font-medium"
                                 )}
                                 aria-current={item.current ? "page" : undefined}
                               >
@@ -75,7 +75,7 @@ function NavBar({ children }) {
                         <Link to="/cart">
                           <button
                             type="button"
-                            className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                            className="rounded-full bg-orange-500 p-1 text-gray-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                           >
                             <span className="sr-only">View notifications</span>
                             <ShoppingCartIcon
@@ -93,7 +93,7 @@ function NavBar({ children }) {
                         {/* Profile dropdown */}
                         <Menu as="div" className="relative ml-3">
                           <div>
-                            <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                            <Menu.Button className="flex max-w-xs  hover:text-white ring-gray-200 ring-1 items-center rounded-full bg-orange-500 text-sm focus:outline-double focus:ring-2 focus:ring-white focus:ring-offset-5 focus:ring-offset-gray-800">
                               <span className="sr-only">Open user menu</span>
                               <img
                                 className="h-8 w-8 rounded-full"
@@ -224,13 +224,13 @@ function NavBar({ children }) {
             )}
           </Disclosure>
 
-          <header className="bg-white shadow">
+          {/* <header className="bg-white shadow">
             <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
               <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-                E-Commerce
+                ZaroortHai
               </h1>
             </div>
-          </header>
+          </header> */}
           <main>
             <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
               {children}

@@ -295,7 +295,7 @@ function MobileFilter({
                               type="checkbox"
                               defaultChecked={option.checked}
                               onChange={(e) => handleFilter(e, section, option)}
-                              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                              className="h-4 w-4 rounded border-gray-300 text-orange-600 focus:ring-orange-500"
                             />
                             <label
                               htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
@@ -355,7 +355,7 @@ function DesktopFilter({ handleFilter, filters }) {
                         type="checkbox"
                         defaultChecked={option.checked}
                         onChange={(e) => handleFilter(e, section, option)}
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                        className="h-4 w-4 rounded border-gray-300 text-orange-600 focus:ring-orange-500"
                       />
                       <label
                         htmlFor={`filter-${section.id}-${optionIdx}`}

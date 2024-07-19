@@ -22,7 +22,7 @@ export default function Login() {
           <img
             className="mx-auto h-10 w-auto"
             src="/Logo.png"
-            alt="Your Company"
+            alt="ZaroortHai"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Log in to your account
@@ -76,7 +76,7 @@ export default function Login() {
                 <div className="text-sm">
                   <Link
                     to="/forgot-password"
-                    className="font-semibold text-indigo-600 hover:text-indigo-500"
+                    className="font-semibold text-orange-600 hover:text-orange-500"
                   >
                     Forgot password?
                   </Link>
@@ -103,7 +103,7 @@ export default function Login() {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-orange-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Log in
               </button>
@@ -114,7 +114,7 @@ export default function Login() {
             Not a member?{" "}
             <Link
               to="/signup"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+              className="font-semibold leading-6 text-orange-500 hover:text-orange-400"
             >
               Create an Account
             </Link>
