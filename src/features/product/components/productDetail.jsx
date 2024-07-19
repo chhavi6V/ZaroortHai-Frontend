@@ -178,7 +178,7 @@ export default function ProductDetail() {
 
               <form className="mt-10">
                 {/* Colors */}
-                <div>
+                {/* <div>
                   <h3 className="text-sm font-medium text-gray-900">Color</h3>
 
                   <fieldset aria-label="Choose a color" className="mt-4">
@@ -208,10 +208,10 @@ export default function ProductDetail() {
                       ))}
                     </RadioGroup>
                   </fieldset>
-                </div>
+                </div> */}
 
                 {/* Sizes */}
-                <div className="mt-10">
+                {/* <div className="mt-10">
                   <div className="flex items-center justify-between">
                     <h3 className="text-sm font-medium text-gray-900">Size</h3>
                     <a
@@ -222,7 +222,7 @@ export default function ProductDetail() {
                     </a>
                   </div>
 
-                  <fieldset aria-label="Choose a size" className="mt-4">
+                  {/* <fieldset aria-label="Choose a size" className="mt-4">
                     <RadioGroup
                       value={selectedSize}
                       onChange={setSelectedSize}
@@ -270,13 +270,13 @@ export default function ProductDetail() {
                         </Radio>
                       ))}
                     </RadioGroup>
-                  </fieldset>
-                </div>
+                  </fieldset> */}
+                {/* </div> */} 
 
                 <button
                   onClick={handleCart}
                   type="submit"
-                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-orange-500 px-8 py-3 text-base font-medium text-white hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
                 >
                   Add to Cart
                 </button>
@@ -295,7 +295,7 @@ export default function ProductDetail() {
                 </div>
               </div>
 
-              <div className="mt-10">
+              {/* <div className="mt-10">
                 <h3 className="text-sm font-medium text-gray-900">
                   Highlights
                 </h3>
@@ -309,7 +309,7 @@ export default function ProductDetail() {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </div> */}
 
               <div className="mt-10">
                 <h2 className="text-sm font-medium text-gray-900">Details</h2>

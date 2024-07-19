@@ -57,6 +57,17 @@ export function checkAuth() {
   });
 }
 
+export function loginWithGoogle() {
+  return new Promise(async (resolve, reject) => {
+    try {
+      window.location.href = "http://localhost:8080/auth/google";
+      resolve();
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
 export function signOut(userId) {
   return new Promise(async (resolve) => {
     // TODO: on server we will remove user session info

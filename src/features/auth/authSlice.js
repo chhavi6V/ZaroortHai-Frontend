@@ -1,9 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { loginUser, createUser, signOut, checkAuth } from "./authAPI";
-import { updateUser } from "../user/userAPI";
+import {
+  loginUser,
+  createUser,
+  signOut,
+  checkAuth,
+  loginWithGoogle,
+} from "./authAPI";
 
 const initialState = {
-  loggedInUserToken: null, // this should only contain user identity => 'id'/'role'
+  loggedInUserToken: null,
   status: "idle",
   error: null,
   userChecked: false,
@@ -13,7 +18,6 @@ export const createUserAsync = createAsyncThunk(
   "user/createUser",
   async (userData) => {
     const response = await createUser(userData);
-    // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
 );
@@ -31,6 +35,13 @@ export const loginUserAsync = createAsyncThunk(
   }
 );
 
+export const loginWithGoogleAsync = createAsyncThunk(
+  "user/loginWithGoogle",
+  async () => {
+    await loginWithGoogle();
+  }
+);
+
 export const checkAuthAsync = createAsyncThunk("user/checkAuth", async () => {
   try {
     const response = await checkAuth();
@@ -44,7 +55,6 @@ export const signOutAsync = createAsyncThunk(
   "user/signOut",
   async (loginInfo) => {
     const response = await signOut(loginInfo);
-    // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
 );
@@ -73,6 +83,9 @@ export const authSlice = createSlice({
         state.status = "idle";
         state.error = action.payload;
       })
+      .addCase(loginWithGoogleAsync.pending, (state) => {
+        state.status = "loading";
+      })
       .addCase(signOutAsync.pending, (state) => {
         state.status = "loading";
       })
@@ -98,7 +111,5 @@ export const authSlice = createSlice({
 export const selectLoggedInUser = (state) => state.auth.loggedInUserToken;
 export const selectError = (state) => state.auth.error;
 export const selectUserChecked = (state) => state.auth.userChecked;
-
-// export const { } = authSlice.actions;
 
 export default authSlice.reducer;

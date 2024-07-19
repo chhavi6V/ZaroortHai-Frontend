@@ -1,8 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectError, selectLoggedInUser } from "../authSlice";
+import {
+  selectError,
+  selectLoggedInUser,
+  loginUserAsync,
+  loginWithGoogleAsync,
+} from "../authSlice";
 import { Link, Navigate } from "react-router-dom";
-import { loginUserAsync } from "../authSlice";
 import { useForm } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -13,6 +18,10 @@ export default function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const handleGoogleLogin = () => {
+    dispatch(loginWithGoogleAsync());
+  };
 
   return (
     <>
@@ -109,6 +118,16 @@ export default function Login() {
               </button>
             </div>
           </form>
+
+          <div className="mt-6">
+            <button
+              onClick={handleGoogleLogin}
+              className="flex w-full justify-center items-center rounded-md bg-white px-3 py-1.5 text-sm font-semibold leading-6 text-gray-900 shadow-sm border border-gray-300 hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600"
+            >
+              <FcGoogle className="w-6 h-6 mr-2"/>
+              Sign in with Google
+            </button>
+          </div>
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{" "}
